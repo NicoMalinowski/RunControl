@@ -1,0 +1,88 @@
+simple tests:
+measurement-IV-MEASURE -c /data/QC_C\&C/QTS_merged_vmux.json -m /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json --site Universitaet_Siegen
+
+./bin/eyeDiagram -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json 
+
+measurement-ADC-CALIBRATION -c /data/QC_C\&C/QTS_merged_vmux.json -m /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json --site Universitaet_Siegen
+
+analysis-ADC-CALIBRATION -i ADC_CALIBRATION/2024-09-10_133204/ -o Results -l L2 
+
+analysis-update-chip-config -i Results/ADC_CALIBRATION/2024-09-10_133412/ -c /data/Yarr_data/Configs/20UPGM22110183/L2_cold/ --override
+
+measurement-ANALOG-READBACK -c /data/QC_C\&C/QTS_merged_vmux.json -m /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json --site Universitaet_Siegen
+
+analysis-ANALOG-READBACK -i ANALOG_READBACK/2024-09-10_133729/ -o Results -l L2 
+
+analysis-update-chip-config -i Results/ANALOG_READBACK/2024-09-10_135954/ -c /data/Yarr_data/Configs/20UPGM22110183/L2_cold/ --override
+
+measurement-SLDO -c /data/QC_C\&C/QTS_merged_vmux.json -m /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json --site Universitaet_Siegen
+
+measurement-VCAL-CALIBRATION -c /data/QC_C\&C/QTS_merged_vmux.json -m /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json --site Universitaet_Siegen
+
+analysis-VCAL-CALIBRATION -i VCAL_CALIBRATION/2024-09-10_133729/ -o Results -l L2 
+
+analysis-update-chip-config -i Results/VCAL_CALIBRATION/2024-09-10_135954/ -c /data/Yarr_data/Configs/20UPGM22110183/L2_cold/ --override
+
+measurement-INJECTION-CAPACITANCE -c /data/QC_C\&C/QTS_merged_vmux.json -m /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json --site Universitaet_Siegen
+
+analysis-INJECTION-CAPACITANCE -i INJECTION_CAPACITANCE/2024-09-10_133729/ -o Results -l L2 
+
+analysis-update-chip-config -i Results/INJECTION_CAPACITANCE/2024-09-10_135954/ -c /data/Yarr_data/Configs/20UPGM22110183/L2_cold/ --override
+
+measurement-LP-MODE -c /data/QC_C\&C/QTS_merged_vmux.json -m /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_LP.json --site Universitaet_Siegen
+
+measurement-OVERVOLTAGE-PROTECTION -c /data/QC_C\&C/QTS_merged_vmux.json -m /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_LP.json --site Universitaet_Siegen
+
+measurement-UNDERSHUNT-PROTECTION -c /data/QC_C\&C/QTS_merged_vmux.json -m /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_LP.json --site Universitaet_Siegen
+
+measurement-DATA-TRANSMISSION -c /data/QC_C\&C/QTS_merged_vmux.json -m /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json --site Universitaet_Siegen
+
+Advanced tests:
+
+MHT:
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110020/20UPGM22110020_L2_cold.json -s configs/scans/rd53b/std_digitalscan.json -p -o /data/Yarr_data/Scans/Si003_0020_ADV/cold/MIN/
+
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_analogscan.json -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/MIN
+
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_thresholdscan_hr.json -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/MIN
+
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_totscan.json -t 6000 -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/MIN
+
+TUN:
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_tune_globalthreshold.json -t 2000 -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/TUN
+
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_thresholdscan_hr.json -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/TUN
+
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_tune_pixelthreshold.json -t 2000 -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/TUN
+
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_retune_globalthreshold.json -t 1500 -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/TUN
+
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_retune_pixelthreshold.json -t 1500 -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/TUN
+
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_thresholdscan_hd.json -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/TUN
+
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_totscan.json -t 6000 -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/TUN
+
+PFT:
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_digitalscan.json -m 1 -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/PFT
+
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_analogscan.json -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/PFT
+
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_thresholdscan_hd.json -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/PFT
+
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_noisescan.json -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/PFT
+
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_discbumpscan.json -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/PFT
+
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_mergedbumpscan.json -t 2000 -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/PFT
+
+(HV off)
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_retune_pixelthreshold.json -t 1500 -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/PFT
+
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_thresholdscan_zerobias.json -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/PFT
+
+(HV on)
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/std_retune_pixelthreshold.json -t 1500 -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/PFT
+
+./bin/scanConsole -r configs/controller/specCfg-rd53b-16x1.json -c /data/Yarr_data/Configs/20UPGM22110183/20UPGM22110183_L2_cold.json -s configs/scans/rd53b/selftrigger_source.json -p -o /data/Yarr_data/Scans/Si005_0183_ADV/cold/PFT
+

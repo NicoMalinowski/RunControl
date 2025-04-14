@@ -1,0 +1,29 @@
+{
+    "SCANS":{
+    	"IV":["IV-MEASURE","simple","1200","False"],
+    	"ADC":["ADC-CALIBRATION","simple","300","True"],
+    	"ANAREAD":["ANALOG-READBACK","simple","2400","True"],
+    	"SLDO":["SLDO","simple","2400","False"],
+    	"VCAL":["VCAL-CALIBRATION","simple","600","True"],
+    	"INJ":["INJECTION-CAPACITANCE","simple","300","True"],
+    	"LPM":["LP-MODE","simple_LP","500","False"],
+    	"OVP":["OVERVOLTAGE-PROTECTION","simple_LP","300","False"],
+    	"USP":["UNDERSHUNT-PROTECTION","simple_LP","300","False"],
+    	"DAT":["DATA-TRANSMISSION","simple","180","False"],
+    	"EYE":["eyeDiagram","eye","120"],
+    	"DIG":["std_digitalscan","yarr","120"],
+    	"ANA":["std_analogscan","yarr","120"],
+    	"THR":["std_thresholdscan_hr","yarr","600"],
+    	"THD":["std_thresholdscan_hd","yarr","620"],
+    	"TZB":["std_thresholdscan_zerobias","yarr","600"],
+    	"TOT":["std_totscan","yarr","120"],
+    	"TUG":["std_tune_globalthreshold","yarr","400"],
+    	"TUP":["std_tune_pixelthreshold","yarr","400"],
+    	"RTG":["std_retune_globalthreshold","yarr","400"],
+    	"RTP":["std_retune_pixelthreshold","yarr","400"],
+    	"NOS":["std_noisescan","yarr","280"],
+    	"DIB":["std_discbumpscan","yarr","280"],
+    	"MER":["std_mergedbumpscan","yarr","400"],
+    	"STS":["selftrigger_source","yarr","2400"]
+    	 }
+}
